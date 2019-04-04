@@ -28,7 +28,7 @@ class MyHandler(BaseHTTPRequestHandler):
             imports_to_replace=[],
             separate_relative=False,
             separate_from_import=False,
-            application_directories=[],
+            application_directories=[str(project_root)],
         )
         self.wfile.write(new_contents.encode())
 
