@@ -6,7 +6,7 @@ from pathlib import Path
 from reorder_python_imports import fix_file_contents
 
 HOST_NAME = 'localhost'
-PORT_NUMBER = 9001
+PORT_NUMBER = 31338
 
 def contains_git(p: Path) -> bool:
     return bool(list(x for x in p.iterdir() if x.name == ".git"))
