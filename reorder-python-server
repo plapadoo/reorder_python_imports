@@ -20,7 +20,7 @@ class MyHandler(BaseHTTPRequestHandler):
         self.send_response(100)
         self.end_headers()
         project_root = Path(self.path)
-        while not contains_git(project_root):
+        while not contains_git(project_root) and not project_root.parent == project_root:
             project_root = project_root.parent
         os.chdir(str(project_root))
         content_raw = self.rfile.read(int(self.headers["content-length"]))
@@ -37,6 +37,7 @@ class MyHandler(BaseHTTPRequestHandler):
             )
             self.wfile.write(new_contents.encode())
         except:
+            print("OH NO: " + content_raw.decode())
             self.wfile.write(content_raw)
 
 
