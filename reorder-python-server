@@ -17,7 +17,7 @@ def contains_git(p: Path) -> bool:
 
 class MyHandler(BaseHTTPRequestHandler):
     def do_POST(self):
-        self.send_response(100)
+        self.send_response(200)
         self.end_headers()
         project_root = Path(self.path)
         while not contains_git(project_root) and not project_root.parent == project_root:
